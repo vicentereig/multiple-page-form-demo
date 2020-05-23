@@ -11,7 +11,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build:css": "npx postcss src/index.css -o src/App.css",
+    "watch:css": "npx postcss -w src/index.css -o src/App.css",
+    "start": "run-p watch:css start:react",
+    "start:react": "react-scripts start",
+    "prebuild": "yarn build:css",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -30,5 +34,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "autoprefixer": "^9.8.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "react-hook-form": "^5.7.2",
+    "tailwindcss": "^1.4.6"
   }
 }

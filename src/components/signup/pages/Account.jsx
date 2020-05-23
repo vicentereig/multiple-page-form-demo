@@ -1,51 +1,20 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { atLeastOneNumber, atLeastOneUpperAndLower, emailPattern } from '../../../lib/validators'
+import ProgressIndicator from '../../ProgressIndicator'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
-const ProgressIndicator = ({}) => {
-  return (
-    <div className="w-full">
-      <div className="flex">
-        <div className="flex-no-grow">
-          <div className="w-6 h-6 bg-gray-800 border-2 border-white mx-auto rounded-full
-        text-white flex">
-          </div>
-        </div>
-
-        <div className="w-full items-center justify-between content-center flex">
-          <div className="w-full items-center align-middle align-center flex-1">
-            <div className="bg-gray-800 text-xs leading-none py-1  w-full"></div>
-          </div>
-        </div>
-
-        <div className="flex-1">
-          <div className="w-6 h-6 bg-gray-400 border-2 border-white mx-auto rounded-full
-        text-md text-white flex items-center">
-          </div>
-        </div>
-
-        <div className="w-full align-center items-center align-middle content-center flex">
-          <div className="w-full bg-gray-100 items-center align-middle align-center flex-1">
-            <div className="bg-gray-200 text-xs leading-none py-1 w-full"></div>
-          </div>
-        </div>
-
-        <div className="flex-1">
-          <div className="w-6 h-6 bg-gray-400 border-2 border-white mx-auto rounded-full
-        text-md text-white flex items-center">
-            <span className="text-white text-center w-full"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const Account = ({className=[]}) => {
-  const { handleSubmit, register, errors } = useForm()
-  const onSubmit = values => console.log(values)
+  const { handleSubmit, register, errors, formState } = useForm()
+  const { isValid } = formState
+
+  const onSubmit = values => {
+    console.log(values)
+    if  (isValid) {
+      console.log('Move forward to the next page')
+    }
+  }
 
   return (
     <div className={defaultClassName.concat(className)}>
@@ -99,7 +68,8 @@ const Account = ({className=[]}) => {
           <span className="text-gray-800">{errors.password && errors.password.message}</span>
         </label>
 
-        <button className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full" type="submit">Next</button>
+        <button className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full"
+                type="submit">Next</button>
       </form>
     </div>
   )

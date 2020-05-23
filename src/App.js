@@ -1,17 +1,13 @@
-import React, {lazy, Suspense} from 'react'
-import { importMDX } from 'mdx.macro'
+import React from 'react'
+import Home from './Pages/Home'
 import './App.css'
 
-const Content = lazy(() => importMDX('./Content/index.mdx'))
 
 function App() {
   return (
-    <div className="overview-page">
-      <Suspense fallback={<div>Loading...</div>}>
-        <Content/>
-      </Suspense>
-
-    </div>
+   <div className="font-sans antialiased w-4/5 mx-auto bg-white my-16">
+     <Home/>
+   </div>
   )
 }
 

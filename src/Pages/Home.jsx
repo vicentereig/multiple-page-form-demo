@@ -42,7 +42,7 @@ const Home = () => {
         <div className="flex flex-row">
           <div className="w-1/2">
             <Provider store={multipleStepStore}>
-              <SignUp/>
+              <SignUp className="w-full"/>
             </Provider>
           </div>
           <div className="w-1/2">

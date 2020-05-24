@@ -4,15 +4,13 @@ import ProgressIndicator from '../../ProgressIndicator'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
-const Privacy = ({className, currentStep, steps}) => {
+const Privacy = ({className, currentStep, steps, moveSteps}) => {
   const { handleSubmit, formState } = useForm()
   const { isValid } = formState
 
   const onSubmit = values => {
-    console.log(values)
-    if  (isValid) {
-      console.log('Move forward to the next page')
-    }
+    // dispatch(createPrivacyDetails(values)
+    moveSteps(currentStep+1)
   }
 
   return (

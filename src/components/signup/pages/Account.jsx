@@ -5,14 +5,16 @@ import ProgressIndicator from '../../ProgressIndicator'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
-const Account = ({className=[], steps, currentStep}) => {
+const Account = ({className=[], steps, currentStep, moveSteps}) => {
   const { handleSubmit, register, errors, formState } = useForm()
   const { isValid } = formState
+  // const [isComplete, setComplete] = useState(false)
 
   const onSubmit = values => {
-    console.log(values)
-    if  (isValid) {
-      console.log('Move forward to the next page')
+    //setComplete(isValid)
+    if (isValid) {
+      // dispatch(createAccount(values))
+      moveSteps(currentStep+1)
     }
   }
 

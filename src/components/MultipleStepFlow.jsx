@@ -30,7 +30,7 @@ const MultipleStepFlow = ({name, children, onComplete}) => {
       if (currentStep === steps.length - 1 ) {
         onComplete()
       }
-    }, [currentStep])
+    }, [currentStep, steps.length])
 
     return Children.map(children, (child, index) => {
       if ( index === currentStep ) {

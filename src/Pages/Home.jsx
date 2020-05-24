@@ -16,11 +16,13 @@ const Home = () => {
 
   return (
     <article className="p-4">
-      <header className="">
-        <h1 className="font-serif tracking-tight font-medium text-3xl">Building a Multiple Step Sign-up Process</h1>
-        <p className="font-light text-lg">
+      <header className="border-b-2 border-gray-400 pb-8 mb-8">
+        <h1 className="font-serif tracking-tight font-medium text-4xl leading-normal pt-4">Building a Multiple Step Sign-up Process</h1>
+        <a href="https://github.com/vicentereig/multiple-page-form-demo" class="text-gray-600">View on Github</a>
+        <p className="font-light text-md pt-2">
           We will go over how to build a form with multiple steps, representing
-          the sign up process for a service.</p>
+          the sign up process for a service.
+        </p>
       </header>
 
       <h2 className="font-serif tracking-tight text-2xl font-medium leading-10">Storybook</h2>

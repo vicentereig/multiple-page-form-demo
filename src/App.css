@@ -14558,8 +14558,8 @@ video {
 
 body {
   --bg-opacity: 1;
-  background-color: #f7fafc;
-  background-color: rgba(247, 250, 252, var(--bg-opacity));
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
 @media (min-width: 640px) {

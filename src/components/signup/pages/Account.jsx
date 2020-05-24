@@ -17,7 +17,7 @@ const Account = ({className=[], steps, currentStep}) => {
   }
 
   return (
-    <div className={defaultClassName.concat(className)}>
+    <div className={defaultClassName.concat(className).join(' ')}>
       <ProgressIndicator className="pb-8" steps={steps} currentStep={currentStep}/>
       <h1 className="font-bold tracking-tight pt-4 text-lg">Setup Your Account</h1>
       <form onSubmit={handleSubmit(onSubmit)}>

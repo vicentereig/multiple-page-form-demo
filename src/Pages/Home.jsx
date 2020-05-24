@@ -1,6 +1,8 @@
 import React from 'react'
 import Account from '../components/signup/pages/Account'
+import Privacy from '../components/signup/pages/Privacy'
 import ProgressIndicator from "../components/ProgressIndicator";
+import SignupComplete from "../components/signup/pages/SignupComplete";
 
 const Home = () => {
   const progress = {
@@ -27,7 +29,9 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">ProgressIndicator</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <ProgressIndicator steps={progress.steps} currentStep={progress.currentStep}/>
+            <ProgressIndicator className="pb-8" steps={progress.steps} currentStep={0}/>
+            <ProgressIndicator className="pb-8" steps={progress.steps} currentStep={1}/>
+            <ProgressIndicator className="pb-8" steps={progress.steps} currentStep={2}/>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">
@@ -59,6 +63,56 @@ const Home = () => {
               </li>
               <li>It will show a progress bar indicating the name
               of the current page, what's being completed, and what's ahead.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Privacy Detail Page</h3>
+        <div className="flex flex-row">
+          <div className="w-1/2">
+            <Privacy
+              className="w-full"
+              steps={progress.steps} currentStep={1}
+            />
+          </div>
+          <div className="w-1/2">
+            <ul className="list-disc pl-8">
+              <li>name, email, and password fiels are required</li>
+              <li>password should be greater than 9 chars and at least one
+                number, one char uppercase, one char lowercase.</li>
+              <li>
+                Next button initially renders disabled, blocking form progress.
+                It's enabled when this step of the form is valid.
+              </li>
+              <li>It will show a progress bar indicating the name
+                of the current page, what's being completed, and what's ahead.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Signup Complete</h3>
+        <div className="flex flex-row">
+          <div className="w-1/2">
+            <SignupComplete
+              className="w-full"
+              steps={progress.steps} currentStep={2}
+            />
+          </div>
+          <div className="w-1/2">
+            <ul className="list-disc pl-8">
+              <li>name, email, and password fiels are required</li>
+              <li>password should be greater than 9 chars and at least one
+                number, one char uppercase, one char lowercase.</li>
+              <li>
+                Next button initially renders disabled, blocking form progress.
+                It's enabled when this step of the form is valid.
+              </li>
+              <li>It will show a progress bar indicating the name
+                of the current page, what's being completed, and what's ahead.</li>
             </ul>
           </div>
         </div>

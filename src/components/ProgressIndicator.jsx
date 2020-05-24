@@ -32,10 +32,11 @@ const ProgressIndicator = ({className, steps=[], currentStep=0}) => {
   }
 
   const ProgressBar = ({steps, currentStep}) => {
-    const Bullet = ({isActive}) => {
+
+    const Bullet = ({isPending}) => {
       const className = "w-6 h-6  border-2 border-white mx-auto rounded-full text-white"
         .split(" ")
-        .concat( isActive ? 'bg-gray-800' : 'bg-gray-400')
+        .concat( isPending ? 'bg-gray-400' : 'bg-gray-800')
         .join(" ")
 
      return (
@@ -46,10 +47,10 @@ const ProgressIndicator = ({className, steps=[], currentStep=0}) => {
      )
     }
 
-    const Edge =({isActive}) => {
+    const Edge =({isPending}) => {
       const className = "text-xs leading-none py-1 w-full"
         .split(" ")
-        .concat( isActive ? 'bg-gray-800' : 'bg-gray-400')
+        .concat( isPending ? 'bg-gray-400' : 'bg-gray-800')
         .join(" ")
 
       return (
@@ -61,20 +62,20 @@ const ProgressIndicator = ({className, steps=[], currentStep=0}) => {
       )
     }
 
-    const Step = ({isActive, stepNo}) => {
+    const Step = ({isPending}) => {
       return (
         <>
-          <Bullet  isActive={stepNo === currentStep}/>
-          <Edge isActive={stepNo === currentStep}/>
+          <Bullet isPending={isPending}/>
+          <Edge isPending={isPending}/>
         </>
       )
     }
     const bar = (
       steps.map((step, i) => {
         if ( i < steps.length - 1 ) {
-          return (<Step key={i} stepNo={i}/>)
+          return (<Step key={i} isPending={i > currentStep}/>)
         } else {
-          return (<Bullet key={i} isActive={i === currentStep}/>)
+          return (<Bullet key={i} isPending={i > currentStep}/>)
         }
       })
     )

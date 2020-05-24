@@ -5,7 +5,7 @@ import ProgressIndicator from '../../ProgressIndicator'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
-const Account = ({className=[]}) => {
+const Account = ({className=[], steps, currentStep}) => {
   const { handleSubmit, register, errors, formState } = useForm()
   const { isValid } = formState
 
@@ -18,7 +18,7 @@ const Account = ({className=[]}) => {
 
   return (
     <div className={defaultClassName.concat(className)}>
-      <ProgressIndicator className="pb-8"/>
+      <ProgressIndicator className="pb-8" steps={steps} currentStep={currentStep}/>
       <h1 className="font-bold tracking-tight pt-4 text-lg">Setup Your Account</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="font-medium text-gray-700 tracking-tight text-md">Your Personal Details</h2>

@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import ProgressIndicator from "../Pages/Home";
+import Account from 'signup/pages/Account'
+import Privacy from 'signup/pages/Privacy'
+import React from "react"
+import {useSelector} from 'react-redux'
 
-
-// gets the children -> feeds the store
-// renders current page
 const SignUp = () => {
+  const user = useSelector( state => state.models.User )
+  const logInfo = () => {
+    console.log(user)
+  }
+
   return (
-    <>
-      li-li-list
-    </>
+    <MultipleStepFlow name="SignUp" onComplete={logInfo}>
+      <Account title="Your Account"/>
+      <Privacy title="Your Privacy"/>
+      <SignupComplete title="All set!"/>
+    </MultipleStepFlow>
   )
 }
-
 
 export default SignUp

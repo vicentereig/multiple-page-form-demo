@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from 'react-redux'
 
-const ProgressIndicator = ({className}) => {
-  const currentStep = useSelector( state => state.ui.SignUp.currentStep )
-  const allSteps = useSelector( state => state.ui.SignUp.steps )
+const ProgressIndicator = ({className, steps, currentStep}) => {
 
-  const labelWidth = useState(`w-1/${allSteps.length}`)
+  const labelWidth = useState(`w-1/${steps.length}`)
 
   const StepLabel = ({title, isFirst, isLast}) => {
     let className = "mx-auto text-gray-800 text-xs".split(" ").concat(labelWidth)
@@ -26,8 +23,6 @@ const ProgressIndicator = ({className}) => {
   }
 
   const Labels = ({steps}) => {
-    console.log("Steps: ", steps)
-
     const labels = steps.map((step, i) => <StepLabel key={i} isFirst={i === 0} isLast={i === steps.length - 1} title={step.title}/>)
 
     return (
@@ -95,8 +90,8 @@ const ProgressIndicator = ({className}) => {
 
   return (
     <div className={className}>
-      <Labels steps={allSteps}/>
-      <ProgressBar steps={allSteps} currentStep={currentStep}/>
+      <Labels steps={steps}/>
+      <ProgressBar steps={steps} currentStep={currentStep}/>
     </div>
   )
 }

@@ -1,75 +1,20 @@
-import React, {useState} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
 
-import SignUp from '../components/SignUp'
+import MultipleStepFlowStory from './MultipleStepFlowStory'
 import Account from '../components/signup/pages/Account'
 import Privacy from '../components/signup/pages/Privacy'
 import ProgressIndicator from "../components/ProgressIndicator";
 import SignupComplete from "../components/signup/pages/SignupComplete";
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 
-const initialState = {
-  ui: {
-    SignUp: {
-      steps: [
-        { title: 'Your Account'},
-        { title: 'Your Privacy'},
-        { title: 'All set!'}
-      ],
-      currentStep: 0
-    }
-  }
-}
-function rootReducer(state, action) {
-  switch (action.type) {
-    default: return state
-  }
-}
-
-function firstStepReducer(state=initialState, action) {
-  return rootReducer(state, action)
-}
-const firstStepStore = createStore(firstStepReducer)
-
-const secondStepState = {...initialState, ...{ui: {SignUp: { steps: [...initialState.ui.SignUp.steps], currentStep: 1}}}}
-function secondStepReducer(state=secondStepState, action) {
-  return rootReducer(state, action)
-}
-const secondStepStore = createStore(secondStepReducer)
-
-const lastStepState = {...initialState, ...{ui: {SignUp: { steps: [...initialState.ui.SignUp.steps], currentStep: 2}}}}
-function lastStepReducer(state=lastStepState, action) {
-  return rootReducer(state, action)
-}
-
-const lastStepStore = createStore(lastStepReducer)
-
-const Step = ({title}) => {
-  const isComplete = useState(false)
+const steps = [
+  { title: 'Your Account'},
+  { title: 'Your Privacy'},
+  { title: 'All set!'}
+]
 
 
-  const stepCompleted = () => {
-
-  }
-
-  const moveForwardIfCompleted = () => {
-
-  }
-  return (
-    <>
-      <ProgressIndicator className="pb-8"/>
-      <button onClick={stepCompleted}
-              className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full"
-              type="submit">Complete</button>
-
-      <button onClick={moveForwardIfCompleted}
-              className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full"
-              type="submit">Next</button>
-    </>
-  )
-}
 const Home = () => {
   return (
     <article className="p-4">
@@ -84,42 +29,15 @@ const Home = () => {
 
       <h2 className="font-serif tracking-tight text-2xl font-medium leading-10">Storybook</h2>
 
-      <section>
-        <h3 className="font-serif tracking-tight text-xl font-medium leading-10">SignUp</h3>
-        <div className="flex flex-row">
-          <div className="w-1/2">
-            <Provider store={firstStepStore}>
-              <SignUp>
-                <Step title="First Step"/>
-                <Step title="Second Step"/>
-                <Step title="Third Step"/>
-                <Step title="Fin."/>
-              </SignUp>
-            </Provider>
-          </div>
-          <div className="w-1/2">
-            <ul className="list-disc pl-8">
-              <li>Support an arbitrary amount of steps</li>
-              <li>Ability to mark which steps have been completed and which are pending</li>
-
-            </ul>
-          </div>
-        </div>
-      </section>
+      <MultipleStepFlowStory/>
 
       <section>
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">ProgressIndicator</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={firstStepStore}>
-              <ProgressIndicator className="pb-8"/>
-            </Provider>
-            <Provider store={secondStepStore}>
-              <ProgressIndicator className="pb-8"/>
-            </Provider>
-            <Provider store={lastStepStore}>
-              <ProgressIndicator className="pb-8"/>
-            </Provider>
+            <ProgressIndicator className="pb-8" currentStep={0} steps={steps}/>
+            <ProgressIndicator className="pb-8" currentStep={1} steps={steps}/>
+            <ProgressIndicator className="pb-8" currentStep={2} steps={steps}/>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">
@@ -135,9 +53,7 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Accounts Detail Page</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={firstStepStore}>
-              <Account className="w-full"/>
-            </Provider>
+            <Account className="w-full" currentStep={0} steps={steps}/>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">
@@ -159,9 +75,7 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Privacy Detail Page</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={secondStepStore}>
-              <Privacy className="w-full"/>
-            </Provider>
+            <Privacy className="w-full" currentStep={1} steps={steps}/>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">
@@ -183,9 +97,7 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Signup Complete</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={secondStepStore}>
-              <SignupComplete className="w-full"/>
-            </Provider>
+            <SignupComplete className="w-full"  currentStep={2} steps={steps}/>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">

@@ -26,6 +26,8 @@ const ProgressIndicator = ({className}) => {
   }
 
   const Labels = ({steps}) => {
+    console.log("Steps: ", steps)
+
     const labels = steps.map((step, i) => <StepLabel key={i} isFirst={i === 0} isLast={i === steps.length - 1} title={step.title}/>)
 
     return (

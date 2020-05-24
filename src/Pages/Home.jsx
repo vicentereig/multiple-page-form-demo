@@ -1,4 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import SignUp from '../components/SignUp'
 import Account from '../components/signup/pages/Account'
 import Privacy from '../components/signup/pages/Privacy'
 import ProgressIndicator from "../components/ProgressIndicator";
@@ -43,8 +46,30 @@ function lastStepReducer(state=lastStepState, action) {
 
 const lastStepStore = createStore(lastStepReducer)
 
+const Step = ({title}) => {
+  const isComplete = useState(false)
 
 
+  const stepCompleted = () => {
+
+  }
+
+  const moveForwardIfCompleted = () => {
+
+  }
+  return (
+    <>
+      <ProgressIndicator className="pb-8"/>
+      <button onClick={stepCompleted}
+              className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full"
+              type="submit">Complete</button>
+
+      <button onClick={moveForwardIfCompleted}
+              className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full"
+              type="submit">Next</button>
+    </>
+  )
+}
 const Home = () => {
   return (
     <article className="p-4">
@@ -58,6 +83,29 @@ const Home = () => {
       </header>
 
       <h2 className="font-serif tracking-tight text-2xl font-medium leading-10">Storybook</h2>
+
+      <section>
+        <h3 className="font-serif tracking-tight text-xl font-medium leading-10">SignUp</h3>
+        <div className="flex flex-row">
+          <div className="w-1/2">
+            <Provider store={firstStepStore}>
+              <SignUp>
+                <Step title="First Step"/>
+                <Step title="Second Step"/>
+                <Step title="Third Step"/>
+                <Step title="Fin."/>
+              </SignUp>
+            </Provider>
+          </div>
+          <div className="w-1/2">
+            <ul className="list-disc pl-8">
+              <li>Support an arbitrary amount of steps</li>
+              <li>Ability to mark which steps have been completed and which are pending</li>
+
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <section>
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">ProgressIndicator</h3>

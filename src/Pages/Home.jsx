@@ -4,9 +4,11 @@ import MultipleStepFlowStory from './MultipleStepFlowStory'
 import Account from '../components/signup/pages/Account'
 import Privacy from '../components/signup/pages/Privacy'
 import ProgressIndicator from "../components/ProgressIndicator";
-import SignupComplete from "../components/signup/pages/SignupComplete";
+import Completed from "../components/signup/pages/Completed";
+import SignUp from "../components/SignUp";
+import {multipleStepStore} from "./MultipleStepFlowStory/store";
+import {Provider} from "react-redux";
 
-import { Provider } from 'react-redux'
 
 const steps = [
   { title: 'Your Account'},
@@ -22,10 +24,31 @@ const Home = () => {
         <h1 className="font-serif tracking-tight font-medium text-4xl leading-normal pt-4">Building a Multiple Step Sign-up Process</h1>
         <a href="https://github.com/vicentereig/multiple-page-form-demo" className="text-gray-600">View on Github</a>
         <p className="font-light text-md pt-2">
-          We will go over how to build a form with multiple steps, representing
-          the sign up process for a service.
+          Hi there!
+
+          Thanks for taking a look at this project. The goal is to
+          write a Multiple Page Form that is easy to extend. This document will
+          walk you through over the following sections:
         </p>
+
+        <ol className="ml-12 list-decimal">
+          <li><strong>Demo</strong></li>
+          <li><strong>Overview of the API</strong>.</li>
+          <li><strong>Storybook</strong>: with an overview of the component breakdown.</li>
+        </ol>
       </header>
+
+      <section>
+        <div className="flex flex-row">
+          <div className="w-1/2">
+            <Provider store={multipleStepStore}>
+              <SignUp/>
+            </Provider>
+          </div>
+          <div className="w-1/2">
+          </div>
+        </div>
+      </section>
 
       <h2 className="font-serif tracking-tight text-2xl font-medium leading-10">Storybook</h2>
 
@@ -97,7 +120,7 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Signup Complete</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <SignupComplete className="w-full"  currentStep={2} steps={steps}/>
+            <Completed className="w-full"  currentStep={2} steps={steps}/>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">

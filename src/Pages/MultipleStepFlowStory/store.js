@@ -1,4 +1,5 @@
-import {createStore, applyMiddleware} from "redux";
+import {createStore, applyMiddleware} from "redux"
+import { createReducer } from '@reduxjs/toolkit'
 
 const CREATE_WORKFLOW = 'CREATE_WORKFLOW'
 function createWorkflow(workflowName) {
@@ -15,28 +16,23 @@ function move(workflowName, nextStep) {
 }
 
 
-function multipleStepReducer(state={ui:{}}, action) {
-  switch(action.type) {
-    case CREATE_WORKFLOW:
-      return {...state, ...{ui: {[action.workflowName]: { steps: [], currentStep: 0}}}}
-    case CREATE_STEPS:
-      return {...state, ...{ui: {[action.workflowName]: { steps: [...action.steps], currentStep: 0}}}}
-    case MOVE:
-      return {...state, ...{ui: {[action.workflowName]: { steps: [...state.ui[action.workflowName].steps], currentStep: action.nextStep}}}}
-    default: return state
-  }
-}
+const multipleStepReducer = createReducer({ui:{}, models:{}}, {
+  CREATE_WORKFLOW: (state, action ) => void (state.ui[action.workflowName] = { steps: [], currentStep: 0 }),
+  CREATE_STEPS: (state, action) => void(state.ui[action.workflowName].steps = action.steps),
+  MOVE: (state, action) => void(state.ui[action.workflowName].currentStep = action.nextStep)
+})
+
 /**
  * Logs all actions and states after they are dispatched.
  */
 const logger = store => next => action => {
   console.group(action.type)
   console.info('dispatching', action)
-  let result = next(action)
+  const result = next(action)
   console.log('next state', store.getState())
   console.groupEnd()
   return result
 }
 const multipleStepStore = createStore(multipleStepReducer, applyMiddleware(logger))
 
-export {multipleStepStore, createWorkflow, createSteps, move}
+export {multipleStepStore, multipleStepReducer, logger, createWorkflow, createSteps, move}

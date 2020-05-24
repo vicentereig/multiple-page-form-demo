@@ -3,7 +3,7 @@ import ProgressIndicator from '../../ProgressIndicator'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
-const SignupComplete = ({className, currentStep, steps}) => {
+const Completed = ({className, currentStep, steps}) => {
   return (
     <div className={defaultClassName.concat(className).join(' ')}>
       <ProgressIndicator className="pb-8" steps={steps} currentStep={currentStep}/>
@@ -15,4 +15,4 @@ const SignupComplete = ({className, currentStep, steps}) => {
   )
 }
 
-export default SignupComplete
+export default Completed

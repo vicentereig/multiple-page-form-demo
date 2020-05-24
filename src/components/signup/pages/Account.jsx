@@ -18,9 +18,11 @@ const Account = ({className=[]}) => {
 
   return (
     <div className={defaultClassName.concat(className)}>
-      <ProgressIndicator/>
-      <h1 className="font-bold tracking-tight pt-4">Setup Your Account</h1>
+      <ProgressIndicator className="pb-8"/>
+      <h1 className="font-bold tracking-tight pt-4 text-lg">Setup Your Account</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h2 className="font-medium text-gray-700 tracking-tight text-md">Your Personal Details</h2>
+
         <label className="block">
           <span className="text-gray-700 text-sm">Name</span>
           <input name="fullName"
@@ -36,7 +38,8 @@ const Account = ({className=[]}) => {
           <input className="form-input text-sm mt-1 block w-full" name="role" placeholder="Software Engineer"/>
         </label>
 
-        <label className="block pt-4">
+        <h2 className="font-medium text-gray-700 tracking-tight text-md pt-4">Your User Details</h2>
+        <label className="block">
           <span className="text-gray-700 text-sm">Email</span>
           <input className="form-input text-sm mt-1 block w-full" name="email" placeholder="jane@email.com"
                    ref={register({

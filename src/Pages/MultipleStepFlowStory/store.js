@@ -2,24 +2,32 @@ import {createStore, applyMiddleware} from "redux"
 import { createReducer } from '@reduxjs/toolkit'
 
 const CREATE_WORKFLOW = 'CREATE_WORKFLOW'
-function createWorkflow(workflowName) {
-  return { type: CREATE_WORKFLOW, workflowName}
+function createWorkflow(workflowName, steps) {
+  return { type: CREATE_WORKFLOW, workflowName, steps}
 }
-const CREATE_STEPS = 'CREATE_STEPS'
-function createSteps(workflowName, steps) {
-  return {type: CREATE_STEPS, workflowName, steps}
-}
+
 
 const MOVE = 'MOVE'
 function move(workflowName, nextStep) {
   return {type: MOVE, workflowName, nextStep}
 }
 
+const CREATE_ACCOUNT = 'CREATE_ACCOUNT'
+function createAccount(account) {
+  return {type: CREATE_ACCOUNT, account}
+}
+
+const CREATE_PRIVACY_DETAILS = 'CREATE_PRIVACY_DETAILS'
+function createPrivacyDetails(privacy) {
+  return {type: CREATE_PRIVACY_DETAILS, privacy }
+}
+
 
 const multipleStepReducer = createReducer({ui:{}, models:{}}, {
-  CREATE_WORKFLOW: (state, action ) => void (state.ui[action.workflowName] = { steps: [], currentStep: 0 }),
-  CREATE_STEPS: (state, action) => void(state.ui[action.workflowName].steps = action.steps),
-  MOVE: (state, action) => void(state.ui[action.workflowName].currentStep = action.nextStep)
+  CREATE_WORKFLOW: (state, action ) => void (state.ui[action.workflowName] = { steps: action.steps, currentStep: 0 }),
+  MOVE: (state, action) => void(state.ui[action.workflowName].currentStep = action.nextStep),
+  CREATE_ACCOUNT: (state, action) => void(state.models.account = action.account),
+  CREATE_PRIVACY_DETAILS: (state, action) => void(state.models.account.privacy = action.privacy)
 })
 
 /**
@@ -35,4 +43,6 @@ const logger = store => next => action => {
 }
 const multipleStepStore = createStore(multipleStepReducer, applyMiddleware(logger))
 
-export {multipleStepStore, multipleStepReducer, logger, createWorkflow, createSteps, move}
+export { multipleStepStore, multipleStepReducer, move,
+         createWorkflow,
+          createAccount, createPrivacyDetails }

@@ -2,44 +2,53 @@ import React, {Children, cloneElement, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {createWorkflow, createSteps, move} from '../Pages/MultipleStepFlowStory/store'
 
-const MultipleStepFlow = ({name, children, onComplete}) => {
+const CurrentStep = ({name, children, workflow, onFinalStepComplete}) => {
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    if ( workflow.currentStep === workflow.steps.length - 1 ) {
+      onFinalStepComplete()
+    }
+  }, [workflow.currentStep, workflow.steps.length])
+
+
+  const moveSteps = (nextStep) => {
+    dispatch(move(name, nextStep))
+  }
+
+
+  return Children.map(children, (child, index) => {
+    if ( index === workflow.currentStep ) {
+      return cloneElement(child, { currentStep: workflow.currentStep, steps: workflow.steps, moveSteps})
+    }
+  })
+}
+
+const MultipleStepFlow = ({name, children, onComplete}) => {
+  const dispatch = useDispatch()
+  const workflow = useSelector( state => state.ui[name])
 
   const buildSteps = () => {
-    const steps = Children.map(children, ({type, props}) => {
+    const steps = Children.map(children, ({props}) => {
       return { title: props.title  }
     })
 
-    dispatch(createWorkflow(name))
-    dispatch(createSteps(name, steps))
+    dispatch(createWorkflow(name, steps))
   }
 
-  buildSteps()
+  useEffect(buildSteps, [])
 
 
-  const CurrentStep = () => {
-    const currentStep = useSelector(state => state.ui[name].currentStep)
-    const steps = useSelector(state => state.ui[name].steps)
 
-    const moveSteps = (nextStep) => {
-      dispatch(move(name, nextStep))
-    }
-
-    useEffect(() => {
-      if (currentStep === steps.length - 1 ) {
-        onComplete()
-      }
-    }, [currentStep, steps.length])
-
-    return Children.map(children, (child, index) => {
-      if ( index === currentStep ) {
-        return cloneElement(child, {currentStep, steps, moveSteps})
-      }
-    })
+  if (!workflow) {
+    return null
   }
 
-  return (<CurrentStep/>)
+  return (
+    <CurrentStep name={name} workflow={workflow} onFinalStepComplete={onComplete}>
+      {children}
+    </CurrentStep>
+  )
 }
 
 export default MultipleStepFlow

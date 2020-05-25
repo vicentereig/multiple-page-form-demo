@@ -76,7 +76,9 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Accounts Detail Page</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Account className="w-full" currentStep={0} steps={steps}/>
+            <Provider store={multipleStepStore}>
+              <Account className="w-full" currentStep={0} steps={steps}/>
+            </Provider>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">
@@ -98,7 +100,9 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Privacy Detail Page</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Privacy className="w-full" currentStep={1} steps={steps}/>
+            <Provider store={multipleStepStore}>
+              <Privacy className="w-full" currentStep={1} steps={steps}/>
+            </Provider>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">
@@ -120,7 +124,9 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Signup Complete</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Completed className="w-full"  currentStep={2} steps={steps}/>
+            <Provider store={multipleStepStore}>
+              <Completed className="w-full"  currentStep={2} steps={steps}/>
+            </Provider>
           </div>
           <div className="w-1/2">
             <ul className="list-disc pl-8">

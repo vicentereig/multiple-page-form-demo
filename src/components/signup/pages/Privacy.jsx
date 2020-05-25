@@ -1,15 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import ProgressIndicator from '../../ProgressIndicator'
+import { createPrivacyDetails } from '../../../Pages/MultipleStepFlowStory/store'
+
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
 const Privacy = ({className, currentStep, steps, moveSteps}) => {
-  const { handleSubmit, formState } = useForm()
-  const { isValid } = formState
+  const { handleSubmit, register } = useForm()
+  const dispatch = useDispatch()
 
-  const onSubmit = values => {
-    // dispatch(createPrivacyDetails(values)
+  const onSubmit = privacy => {
+    dispatch(createPrivacyDetails(privacy))
     moveSteps(currentStep+1)
   }
 
@@ -26,7 +29,7 @@ const Privacy = ({className, currentStep, steps, moveSteps}) => {
           <div className="mt-2">
             <div>
               <label className="inline-flex items-center">
-                <input type="checkbox" className="form-checkbox"/>
+                <input type="checkbox" name="productUpdatesSubscription" ref={register} className="form-checkbox"/>
                   <span className="ml-2">
                     Receive updates about Tray.io product by email
                   </span>
@@ -34,7 +37,7 @@ const Privacy = ({className, currentStep, steps, moveSteps}) => {
             </div>
             <div>
               <label className="inline-flex items-center">
-                <input type="checkbox" className="form-checkbox"/>
+                <input type="checkbox" name="otherProductsSubscription" ref={register}  className="form-checkbox"/>
                   <span className="ml-2">
                     Receive communication by email for other products
 

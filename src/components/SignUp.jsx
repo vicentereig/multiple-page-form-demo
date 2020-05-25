@@ -8,11 +8,11 @@ import Completed from './signup/pages/Completed'
 
 
 const SignUp = ({className}) => {
-  const user = useSelector( state => state.models.signUp )
+  const account = useSelector( state => state.models.account )
 
   const logInfo = () => {
+    console.log('User created', account)
 
-    console.log('Done')
   }
 
   return (

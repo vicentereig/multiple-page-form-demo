@@ -31,7 +31,7 @@ describe('When working with multiple step workflows', () => {
 
     store.dispatch(createWorkflow(name, steps))
     store.dispatch(move(name,1 ))
-    
+
     expect(store.getState()).toStrictEqual({models:{}, ui: {test: {steps, currentStep: 1}}})
   })
 

@@ -1,11 +1,17 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
+
 import { atLeastOneNumber, atLeastOneUpperAndLower, emailPattern } from 'lib/validators'
 import ProgressIndicator from 'components/ProgressIndicator'
 import { createAccount } from 'components/SignUp/Account/actions'
-import { useDispatch } from 'react-redux'
+import ErrorMessage from 'components/SignUp/Account/ErrorMessage'
+import ActionPanel from 'components/MultipleStepFlow/ActionPanel'
+import NextButton from 'components/MultipleStepFlow/NextButton'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
+
+
 const Account = ({className=[], steps, currentStep, moveSteps}) => {
   const { handleSubmit, register, errors, formState } = useForm()
   const { isValid } = formState
@@ -17,6 +23,7 @@ const Account = ({className=[], steps, currentStep, moveSteps}) => {
       moveSteps(currentStep+1)
     }
   }
+
 
   return (
     <div className={defaultClassName.concat(className).join(' ')}>
@@ -32,7 +39,7 @@ const Account = ({className=[], steps, currentStep, moveSteps}) => {
                  className="form-input text-sm mt-1 block w-full"
                  ref={register({required: 'Please enter your full name'})}
           />
-          <span className="text-gray-800 text-sm">{errors.fullName && errors.fullName.message}</span>
+          <ErrorMessage errors={errors} fieldName="fullName"/>
         </label>
 
         <label className="block pt-4">
@@ -52,7 +59,7 @@ const Account = ({className=[], steps, currentStep, moveSteps}) => {
                      }
                   })}
           />
-          <span className="text-gray-800 text-sm">{errors.email && errors.email.message}</span>
+          <ErrorMessage errors={errors} fieldName="email"/>
         </label>
 
         <label className="block pt-4">
@@ -70,11 +77,12 @@ const Account = ({className=[], steps, currentStep, moveSteps}) => {
                    validate: { atLeastOneNumber, atLeastOneUpperAndLower}
                  })}
           />
-          <span className="text-gray-800">{errors.password && errors.password.message}</span>
+          <ErrorMessage errors={errors} fieldName="password"/>
         </label>
 
-        <button className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full"
-                type="submit">Next</button>
+        <ActionPanel>
+          <NextButton/>
+        </ActionPanel>
       </form>
     </div>
   )

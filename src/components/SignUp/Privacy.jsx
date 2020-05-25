@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import ProgressIndicator from 'components/ProgressIndicator'
 import { createPrivacyDetails } from 'components/SignUp/Privacy/actions'
-
+import ActionPanel from 'components/MultipleStepFlow/ActionPanel'
+import NextButton from 'components/MultipleStepFlow/NextButton'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
@@ -48,8 +49,9 @@ const Privacy = ({className, currentStep, steps, moveSteps}) => {
           </div>
         </div>
 
-        <button className="bg-gray-800 text-white mt-4 py-2 px-4 rounded-full"
-                type="submit">Next</button>
+        <ActionPanel>
+          <NextButton/>
+        </ActionPanel>
       </form>
     </div>
   )

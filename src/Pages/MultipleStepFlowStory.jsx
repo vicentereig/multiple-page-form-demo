@@ -1,19 +1,21 @@
 import React, {useState} from "react"
-import {Provider, useDispatch} from "react-redux"
-import ProgressIndicator from "../components/ProgressIndicator"
-import {multipleStepStore, move} from "./MultipleStepFlowStory/store"
-import MultipleStepFlow from '../components/MultipleStepFlow'
+import {Provider} from "react-redux"
+import store from "config/store"
+
+import ProgressIndicator from "components/ProgressIndicator"
+import MultipleStepFlow from 'components/MultipleStepFlow'
 
 const MultipleStepFlowStory = () => {
   const logCompletion = () => {
     console.log('Completed!')
   }
+
   return (
     <section>
       <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Multiple Step Flow</h3>
       <div className="flex flex-row">
         <div className="w-1/2">
-          <Provider store={multipleStepStore}>
+          <Provider store={store}>
             <MultipleStepFlow name="Sample Flow" onComplete={logCompletion}>
               <Step title="First Step"/>
               <Step title="Second Step"/>

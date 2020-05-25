@@ -1,12 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { atLeastOneNumber, atLeastOneUpperAndLower, emailPattern } from '../../../lib/validators'
-import ProgressIndicator from '../../ProgressIndicator'
-import { createAccount } from '../../../Pages/MultipleStepFlowStory/store'
+import { atLeastOneNumber, atLeastOneUpperAndLower, emailPattern } from 'lib/validators'
+import ProgressIndicator from 'components/ProgressIndicator'
+import { createAccount } from 'components/SignUp/Account/actions'
 import { useDispatch } from 'react-redux'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
-// {workflow, {steps, moveForward})
 const Account = ({className=[], steps, currentStep, moveSteps}) => {
   const { handleSubmit, register, errors, formState } = useForm()
   const { isValid } = formState

@@ -1,5 +1,5 @@
 import React from 'react'
-import ProgressIndicator from '../../ProgressIndicator'
+import ProgressIndicator from 'components/ProgressIndicator'
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 

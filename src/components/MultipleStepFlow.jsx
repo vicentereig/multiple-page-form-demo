@@ -1,15 +1,17 @@
 import React, {Children, cloneElement, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {createWorkflow, createSteps, move} from '../Pages/MultipleStepFlowStory/store'
+import {createWorkflow, createSteps, move} from 'components/MultipleStepFlow/actions'
 
 const CurrentStep = ({name, children, workflow, onFinalStepComplete}) => {
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  const notifyParentWhenFlowIsComplete = () => {
     if ( workflow.currentStep === workflow.steps.length - 1 ) {
       onFinalStepComplete()
     }
-  }, [workflow.currentStep, workflow.steps.length])
+  }
+
+  useEffect(notifyParentWhenFlowIsComplete, [workflow.currentStep, workflow.steps.length, onFinalStepComplete])
 
 
   const moveSteps = (nextStep) => {

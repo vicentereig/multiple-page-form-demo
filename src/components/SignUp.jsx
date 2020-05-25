@@ -1,9 +1,9 @@
 import React from "react"
 import {useSelector} from 'react-redux'
-import MultipleStepFlow from './MultipleStepFlow'
-import Account from './signup/pages/Account'
-import Privacy from './signup/pages/Privacy'
-import Completed from './signup/pages/Completed'
+import MultipleStepFlow from 'components/MultipleStepFlow'
+import Account from 'components/SignUp/Account'
+import Privacy from 'components/SignUp/Privacy'
+import Completed from 'components/SignUp/Completed'
 
 
 

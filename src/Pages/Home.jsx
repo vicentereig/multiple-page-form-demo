@@ -1,12 +1,15 @@
 import React from 'react'
 
 import MultipleStepFlowStory from './MultipleStepFlowStory'
-import Account from '../components/signup/pages/Account'
-import Privacy from '../components/signup/pages/Privacy'
+
+import Account from 'components/SignUp/Account'
+import Privacy from 'components/SignUp/Privacy'
+import Completed from "components/SignUp/Completed"
+import SignUp from "components/SignUp";
+
 import ProgressIndicator from "../components/ProgressIndicator";
-import Completed from "../components/signup/pages/Completed";
-import SignUp from "../components/SignUp";
-import {multipleStepStore} from "./MultipleStepFlowStory/store";
+
+import store from "config/store"
 import {Provider} from "react-redux";
 
 
@@ -41,7 +44,7 @@ const Home = () => {
       <section>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={multipleStepStore}>
+            <Provider store={store}>
               <SignUp className="w-full"/>
             </Provider>
           </div>
@@ -76,7 +79,7 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Accounts Detail Page</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={multipleStepStore}>
+            <Provider store={store}>
               <Account className="w-full" currentStep={0} steps={steps}/>
             </Provider>
           </div>
@@ -100,7 +103,7 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Privacy Detail Page</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={multipleStepStore}>
+            <Provider store={store}>
               <Privacy className="w-full" currentStep={1} steps={steps}/>
             </Provider>
           </div>
@@ -124,7 +127,7 @@ const Home = () => {
         <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Signup Complete</h3>
         <div className="flex flex-row">
           <div className="w-1/2">
-            <Provider store={multipleStepStore}>
+            <Provider store={store}>
               <Completed className="w-full"  currentStep={2} steps={steps}/>
             </Provider>
           </div>

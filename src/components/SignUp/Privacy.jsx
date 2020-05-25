@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import ProgressIndicator from '../../ProgressIndicator'
-import { createPrivacyDetails } from '../../../Pages/MultipleStepFlowStory/store'
+import ProgressIndicator from 'components/ProgressIndicator'
+import { createPrivacyDetails } from 'components/SignUp/Privacy/actions'
 
 
 const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()

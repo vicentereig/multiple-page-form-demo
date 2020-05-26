@@ -30,7 +30,7 @@ const Privacy = ({className, currentStep, steps, moveSteps}) => {
           <div className="mt-2">
             <div>
               <label className="inline-flex items-center">
-                <input type="checkbox" name="productUpdatesSubscription" ref={register} className="form-checkbox"/>
+                <input type="checkbox" name="productUpdatesSubscription" ref={register} className="form-checkbox productUpdatesField"/>
                   <span className="ml-2">
                     Receive updates about Tray.io product by email
                   </span>
@@ -38,7 +38,7 @@ const Privacy = ({className, currentStep, steps, moveSteps}) => {
             </div>
             <div>
               <label className="inline-flex items-center">
-                <input type="checkbox" name="otherProductsSubscription" ref={register}  className="form-checkbox"/>
+                <input type="checkbox" name="otherProductsSubscription" ref={register}  className="form-checkbox otherProductsField"/>
                   <span className="ml-2">
                     Receive communication by email for other products
 

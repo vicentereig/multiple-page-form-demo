@@ -13,15 +13,12 @@ const defaultClassName = "border rounded-lg border-gray-300 p-4 w-1/2".split()
 
 
 const Account = ({className=[], steps, currentStep, moveSteps}) => {
-  const { handleSubmit, register, errors, formState } = useForm()
-  const { isValid } = formState
+  const { handleSubmit, register, errors } = useForm()
   const dispatch = useDispatch()
 
   const onSubmit = values => {
-    if (isValid) {
-      dispatch(createAccount(values))
-      moveSteps(currentStep+1)
-    }
+    dispatch(createAccount(values))
+    moveSteps(currentStep+1)
   }
 
 
@@ -36,7 +33,7 @@ const Account = ({className=[], steps, currentStep, moveSteps}) => {
           <span className="text-gray-700 text-sm">Name</span>
           <input name="fullName"
                  placeholder="Jane Doe"
-                 className="form-input text-sm mt-1 block w-full"
+                 className="form-input text-sm mt-1 block w-full  fullNameField"
                  ref={register({required: 'Please enter your full name'})}
           />
           <ErrorMessage errors={errors} fieldName="fullName"/>
@@ -44,13 +41,13 @@ const Account = ({className=[], steps, currentStep, moveSteps}) => {
 
         <label className="block pt-4">
           <span className="text-gray-700 text-sm">Role</span>
-          <input className="form-input text-sm mt-1 block w-full" name="role" placeholder="Software Engineer"/>
+          <input className="form-input text-sm mt-1 block w-full roleField" name="role" placeholder="Software Engineer"/>
         </label>
 
         <h2 className="font-medium text-gray-700 tracking-tight text-md pt-4">Your User Details</h2>
         <label className="block">
           <span className="text-gray-700 text-sm">Email</span>
-          <input className="form-input text-sm mt-1 block w-full" name="email" placeholder="jane@email.com"
+          <input className="form-input text-sm mt-1 block w-full emailField" name="email" placeholder="jane@email.com"
                    ref={register({
                      required: 'Please enter your email address',
                      pattern: {
@@ -67,7 +64,7 @@ const Account = ({className=[], steps, currentStep, moveSteps}) => {
           <input type="password"
                  name="password"
                  placeholder="Your password"
-                 className="form-input text-sm mt-1 block w-full"
+                 className="form-input text-sm mt-1 block w-full passwordField"
                  ref={register({
                    required: 'In order to keep your account safe, you need to choose a password',
                    minLength: {

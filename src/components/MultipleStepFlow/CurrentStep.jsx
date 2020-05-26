@@ -1,5 +1,5 @@
+import React, {Children, cloneElement, useEffect} from "react"
 import {useDispatch} from "react-redux"
-import {Children, cloneElement, useEffect} from "react"
 import {move} from 'components/MultipleStepFlow/actions'
 
 /**
@@ -34,11 +34,13 @@ const CurrentStep = ({name, children, workflow, onFinalStepComplete}) => {
   }
 
 
-  return Children.map(children, (child, index) => {
+  const currentChild = Children.map(children, (child, index) => {
     if ( index === workflow.currentStep ) {
       return cloneElement(child, { currentStep: workflow.currentStep, steps: workflow.steps, moveSteps: moveSteps})
     }
   })
+
+  return (<div id={name}>{currentChild}</div>)
 }
 
 export default CurrentStep

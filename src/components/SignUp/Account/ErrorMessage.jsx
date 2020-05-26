@@ -4,9 +4,10 @@ const ErrorMessage = ({errors, fieldName}) => {
   if (!errors[fieldName]) {
     return null
   }
-
+  const className = `text-red-500 text-xs errorMessage-${fieldName}`
+  const {message} = errors[fieldName]
   return (
-    <span className="text-red-500 text-xs">{errors[fieldName] && errors[fieldName].message}</span>
+    <span className={className}>{message}</span>
   )
 }
 

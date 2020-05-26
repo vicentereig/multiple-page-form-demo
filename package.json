@@ -22,6 +22,7 @@
     "start": "run-p watch:css start:react",
     "start:react": "react-scripts start",
     "prebuild": "yarn build:css",
+    "postbuikd": "scripts/postbuild.sh",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

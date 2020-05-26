@@ -37,19 +37,19 @@ const Home = () => {
 
         <ol className="font-light text-md pt-2 ml-12 list-decimal">
           <li><strong>Interactive Demo</strong></li>
-          <li><strong>Storybook</strong>: a breakdown of the low-fi components used in the multiple step form.</li>
+          <li><strong>Storybook</strong>: a breakdown of the <em>low-fi</em> components used in the multiple step form.</li>
         </ol>
 
         <p className="font-light text-md pt-2">Head over to the <a class="text-blue-400 underline font-medium" href="https://github.com/vicentereig/multiple-page-form-demo/blob/master/README.md">
             README.md
-          </a> to learn how to use the code, set it up, and extend it.
+          </a> to learn how to use the code and set up the project.
         </p>
       </header>
 
 
       <section>
         <h2 className="font-serif tracking-tight text-2xl font-medium leading-10">Interactive Demo</h2>
-        <p>When you have completed the three steps in the workflow, it will `console.log` a JSON object
+        <p>When you have completed the three steps in the workflow, it will <code>console.log</code> a JSON object
           containing all the information you entered.</p>
         <div className="pt-8 flex flex-row">
           <div className="mx-auto w-1/3">

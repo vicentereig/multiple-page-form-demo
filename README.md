@@ -29,9 +29,11 @@
  ```jsx
  const Step = ({title, currentStep, steps, moveSteps}} => {
    return (
+   <>
      <h1>{title}</h1>
      Progress: {currentStep+1}/{steps.length}
      <button onClick={() => moveSteps(currentStep+1)}>
+    </>
    )
  }
 

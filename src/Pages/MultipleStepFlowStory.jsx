@@ -11,7 +11,7 @@ const MultipleStepFlowStory = () => {
   }
 
   return (
-    <section>
+    <section className="pt-4">
       <h3 className="font-serif tracking-tight text-xl font-medium leading-10">Multiple Step Flow</h3>
       <div className="flex flex-row">
         <div className="w-1/2">
@@ -24,12 +24,22 @@ const MultipleStepFlowStory = () => {
             </MultipleStepFlow>
           </Provider>
         </div>
-        <div className="w-1/2">
-          <ul className="list-disc pl-8">
-            <li>Support an arbitrary amount of steps</li>
-            <li>Each Step requires to be marked as `completed` before moving forward.</li>
+        <div className="pl-8 w-1/2">
+          <p>
+            A Multiple Step Workflow supports an arbitrary amount of steps. In this example,
+            each step specifies a title, and additionally needs to be completed before moving
+            forward.
+          </p>
 
-          </ul>
+          <p>Steps are represented as children React components, which are rendered one at the time.</p>
+
+          <p>Every time a Step is rendered, the <code>MultipleStepFlow</code> provides them with
+            additional properties such as <code>currentStep</code> and <code>steps</code>. This way
+            the current step is able to show progress back to the user.</p>
+
+          <p>
+            In this naive scenario, completion is marked when the button Completed is cliked.
+          </p>
         </div>
       </div>
     </section>

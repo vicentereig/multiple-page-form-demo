@@ -9989,6 +9989,38 @@ video {
   text-align: justify;
 }
 
+.first\:text-left:first-child {
+  text-align: left;
+}
+
+.first\:text-center:first-child {
+  text-align: center;
+}
+
+.first\:text-right:first-child {
+  text-align: right;
+}
+
+.first\:text-justify:first-child {
+  text-align: justify;
+}
+
+.last\:text-left:last-child {
+  text-align: left;
+}
+
+.last\:text-center:last-child {
+  text-align: center;
+}
+
+.last\:text-right:last-child {
+  text-align: right;
+}
+
+.last\:text-justify:last-child {
+  text-align: justify;
+}
+
 .text-transparent {
   color: transparent;
 }
@@ -23733,6 +23765,38 @@ body {
     text-align: justify;
   }
 
+  .sm\:first\:text-left:first-child {
+    text-align: left;
+  }
+
+  .sm\:first\:text-center:first-child {
+    text-align: center;
+  }
+
+  .sm\:first\:text-right:first-child {
+    text-align: right;
+  }
+
+  .sm\:first\:text-justify:first-child {
+    text-align: justify;
+  }
+
+  .sm\:last\:text-left:last-child {
+    text-align: left;
+  }
+
+  .sm\:last\:text-center:last-child {
+    text-align: center;
+  }
+
+  .sm\:last\:text-right:last-child {
+    text-align: right;
+  }
+
+  .sm\:last\:text-justify:last-child {
+    text-align: justify;
+  }
+
   .sm\:text-transparent {
     color: transparent;
   }
@@ -37469,6 +37533,38 @@ body {
   }
 
   .md\:text-justify {
+    text-align: justify;
+  }
+
+  .md\:first\:text-left:first-child {
+    text-align: left;
+  }
+
+  .md\:first\:text-center:first-child {
+    text-align: center;
+  }
+
+  .md\:first\:text-right:first-child {
+    text-align: right;
+  }
+
+  .md\:first\:text-justify:first-child {
+    text-align: justify;
+  }
+
+  .md\:last\:text-left:last-child {
+    text-align: left;
+  }
+
+  .md\:last\:text-center:last-child {
+    text-align: center;
+  }
+
+  .md\:last\:text-right:last-child {
+    text-align: right;
+  }
+
+  .md\:last\:text-justify:last-child {
     text-align: justify;
   }
 
@@ -51211,6 +51307,38 @@ body {
     text-align: justify;
   }
 
+  .lg\:first\:text-left:first-child {
+    text-align: left;
+  }
+
+  .lg\:first\:text-center:first-child {
+    text-align: center;
+  }
+
+  .lg\:first\:text-right:first-child {
+    text-align: right;
+  }
+
+  .lg\:first\:text-justify:first-child {
+    text-align: justify;
+  }
+
+  .lg\:last\:text-left:last-child {
+    text-align: left;
+  }
+
+  .lg\:last\:text-center:last-child {
+    text-align: center;
+  }
+
+  .lg\:last\:text-right:last-child {
+    text-align: right;
+  }
+
+  .lg\:last\:text-justify:last-child {
+    text-align: justify;
+  }
+
   .lg\:text-transparent {
     color: transparent;
   }
@@ -64947,6 +65075,38 @@ body {
   }
 
   .xl\:text-justify {
+    text-align: justify;
+  }
+
+  .xl\:first\:text-left:first-child {
+    text-align: left;
+  }
+
+  .xl\:first\:text-center:first-child {
+    text-align: center;
+  }
+
+  .xl\:first\:text-right:first-child {
+    text-align: right;
+  }
+
+  .xl\:first\:text-justify:first-child {
+    text-align: justify;
+  }
+
+  .xl\:last\:text-left:last-child {
+    text-align: left;
+  }
+
+  .xl\:last\:text-center:last-child {
+    text-align: center;
+  }
+
+  .xl\:last\:text-right:last-child {
+    text-align: right;
+  }
+
+  .xl\:last\:text-justify:last-child {
     text-align: justify;
   }
 

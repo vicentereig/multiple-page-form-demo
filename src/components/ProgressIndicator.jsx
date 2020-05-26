@@ -4,31 +4,23 @@ const ProgressIndicator = ({className, steps, currentStep}) => {
 
   const labelWidth = useState(`w-1/${steps.length}`)
 
-  const StepLabel = ({title, isFirst, isLast}) => {
-    let className = "mx-auto text-gray-800 text-xs".split(" ").concat(labelWidth)
-
-    if (isFirst) {
-      className.push('text-left')
-    } else if (isLast) {
-      className.push('text-right')
-    } else {
-      className.push('text-center')
-    }
+  const StepLabel = ({title}) => {
+    let className = "mx-auto text-gray-800 text-xs  text-center first:text-left last:text-right".split(" ").concat(labelWidth)
 
     return (
-      <div className={className.join(" ")}>
+      <li className={className.join(" ")}>
         {title}
-      </div>
+      </li>
     )
   }
 
   const Labels = ({steps}) => {
-    const labels = steps.map((step, i) => <StepLabel key={i} isFirst={i === 0} isLast={i === steps.length - 1} title={step.title}/>)
+    const labels = steps.map((step, i) => <StepLabel key={i}  title={step.title}/>)
 
     return (
-      <div className="flex content-center">
+      <ul className="flex content-center">
         {labels}
-      </div>
+      </ul>
     )
   }
 

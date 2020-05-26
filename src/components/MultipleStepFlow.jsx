@@ -1,4 +1,4 @@
-import React, {Children, cloneElement, useEffect} from 'react'
+import React, {Children, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {createWorkflow, createSteps, move} from 'components/MultipleStepFlow/actions'
 import CurrentStep from 'components/MultipleStepFlow/CurrentStep'
